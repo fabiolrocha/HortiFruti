@@ -57,3 +57,17 @@
     cursor: pointer;
     font-size: 1.3rem;
 }
+
+.botaoRegistrar{
+    width: 100px;
+    height: 30px;
+    padding: 10px;
+    background-color: #2E7D32;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.6rem;
+    margin-top: 10px;
+    margin-left: 25%;
+}

@@ -23,7 +23,7 @@ const Login: React.FC = () => {
       localStorage.setItem("entregadorId", response.data.entregadorId);
 
       // Redireciona para a página de pedidos
-      navigate("/pedidos");
+      navigate("../dashboard");
     } catch (error) {
       console.error("Erro no login", error);
       alert("Login falhou!");
@@ -41,6 +41,7 @@ const Login: React.FC = () => {
             placeholder="CPF"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
           <br />
           <input
@@ -49,10 +50,14 @@ const Login: React.FC = () => {
             placeholder="SENHA"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <br />
           <button type="submit" className="botaoLogin">
             LOGIN
+          </button>
+          <button type="submit" className="botaoRegistrar" onClick={() => navigate("../cadastro")}>
+            REGISTRE-SE
           </button>
         </form>
       </div>
