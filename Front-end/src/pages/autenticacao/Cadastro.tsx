@@ -47,8 +47,8 @@ const Cadastro: React.FC = () => {
       <h1 className="cadastreInformacoes">Cadastre Suas Informações</h1>
 
       <form className="formularioCadastro" onSubmit={handleSubmit}>
-        <div className="formularioCadastro2">
-          <div className="informacoes">
+        <div className="containerInformacoesCadastro">
+          <div className="informacoesCadastro">
             <input
               className="inputCadastro"
               type="text"
@@ -108,7 +108,7 @@ const Cadastro: React.FC = () => {
               </label>
             </div>
           </div>
-          <div className="informacoes">
+          <div className="informacoesCadastro">
             <input
               className="inputCadastro"
               type="text"

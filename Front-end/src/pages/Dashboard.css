@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #f9f9d5;
+  position: relative;
+}
+
+.sidebar {
+  background: #fff;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 30px;
+}
+
+.logo img {
+  width: 200px;
+  height: auto;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.menu li {
+  cursor: pointer;
+  padding: 8px 0;
+  color: #A8E6A3;
+}
+
+.menu .ativo {
+  font-weight: bold;
+  border-left: 4px solid #2e7d32;
+  padding-left: 10px;
+  color: #2e7d32;
+}
+
+.botaoMoto {
+  margin-top: auto;
+  padding: 10px 15px;
+  background: #A8E6A3;
+  border: none;
+  border-radius: 6px;
+  color: #2e7d32;
+  cursor: pointer;
+  font-weight: bold;
+  width: 230px;
+  height: 100px;
+  font-size: 1.3rem;
+}
+
+
+/*
+.main {
+  flex: 1;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.logout {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #2e7d32;
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+*/

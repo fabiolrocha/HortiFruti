@@ -24,14 +24,14 @@
   margin-bottom: 20px;
 }
 
-.formularioCadastro2 {
+.containerInformacoesCadastro {
   display: flex;
   justify-content: space-between;
   gap: 20px;
   margin-top: 20px;
 }
 
-.informacoes {
+.informacoesCadastro {
   flex-direction: column;
   gap: 10px;
   flex: 1;
