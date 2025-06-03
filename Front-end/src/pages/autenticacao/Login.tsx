@@ -56,7 +56,11 @@ const Login: React.FC = () => {
           <button type="submit" className="botaoLogin">
             LOGIN
           </button>
-          <button type="submit" className="botaoRegistrar" onClick={() => navigate("../cadastro")}>
+          <button
+            type="submit"
+            className="botaoRegistrar"
+            onClick={() => navigate("../cadastro")}
+          >
             REGISTRE-SE
           </button>
         </form>

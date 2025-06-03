@@ -47,83 +47,87 @@ const Cadastro: React.FC = () => {
       <h1 className="cadastreInformacoes">Cadastre Suas Informações</h1>
 
       <form className="formularioCadastro" onSubmit={handleSubmit}>
-        <div className="informacoes">
-          <input
-            className="inputCadastro"
-            type="text"
-            placeholder="NOME COMPLETO"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            required
-          />
-          <input
-            className="inputCadastro"
-            type="password"
-            placeholder="SENHA"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            required
-          />
-          <input
-            className="inputCadastro"
-            type="text"
-            placeholder="CPF"
-            value={cpf}
-            onChange={(e) => setCpf(e.target.value)}
-            required
-          />
-          <input
-            className="inputCadastro"
-            type="text"
-            placeholder="ENDEREÇO COMPLETO"
-            value={endereco}
-            onChange={(e) => setEndereco(e.target.value)}
-            required
-          />
-          <input
-            className="inputCadastro"
-            type="text"
-            placeholder="NÚMERO"
-            value={numero}
-            onChange={(e) => setNumero(e.target.value)}
-            required
-          />
-          <div className="checkboxes">
-            <label>
-              <input
-                type="checkbox"
-                checked={motocicleta}
-                onChange={(e) => setMotocicleta(e.target.checked)}
-              />{" "}
-              MOTOCICLETA
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={bicicleta}
-                onChange={(e) => setBicicleta(e.target.checked)}
-              />{" "}
-              BICICLETA
-            </label>
+        <div className="formularioCadastro2">
+          <div className="informacoes">
+            <input
+              className="inputCadastro"
+              type="text"
+              placeholder="NOME COMPLETO"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required
+            />
+            <input
+              className="inputCadastro"
+              type="password"
+              placeholder="SENHA"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+            />
+            <input
+              className="inputCadastro"
+              type="text"
+              placeholder="CPF"
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)}
+              required
+            />
+            <input
+              className="inputCadastro"
+              type="text"
+              placeholder="ENDEREÇO COMPLETO"
+              value={endereco}
+              onChange={(e) => setEndereco(e.target.value)}
+              required
+            />
+            <input
+              className="inputCadastro"
+              type="text"
+              placeholder="NÚMERO"
+              value={numero}
+              onChange={(e) => setNumero(e.target.value)}
+              required
+            />
+            <div className="checkboxes">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={motocicleta}
+                  onChange={(e) => setMotocicleta(e.target.checked)}
+                />{" "}
+                MOTOCICLETA
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={bicicleta}
+                  onChange={(e) => setBicicleta(e.target.checked)}
+                />{" "}
+                BICICLETA
+              </label>
+            </div>
           </div>
-          <input
-            className="inputCadastro"
-            type="text"
-            placeholder="PLACA DA MOTOCICLETA"
-            value={placaMoto}
-            onChange={(e) => setPlacaMoto(e.target.value)}
-            required={motocicleta}
-          />
-          <input
-            className="inputCadastro"
-            type="text"
-            placeholder="MODELO DA MOTOCICLETA"
-            value={modeloMoto}
-            onChange={(e) => setModeloMoto(e.target.value)}
-            required={motocicleta}
-          />
-          <div className="upload">ADICIONE A FRENTE DA CNH</div>
-          <div className="upload">ADICIONE A TRÁS DA CNH</div>
+          <div className="informacoes">
+            <input
+              className="inputCadastro"
+              type="text"
+              placeholder="PLACA DA MOTOCICLETA"
+              value={placaMoto}
+              onChange={(e) => setPlacaMoto(e.target.value)}
+              required={motocicleta}
+            />
+            <input
+              className="inputCadastro"
+              type="text"
+              placeholder="MODELO DA MOTOCICLETA"
+              value={modeloMoto}
+              onChange={(e) => setModeloMoto(e.target.value)}
+              required={motocicleta}
+            />
+            <div className="upload">ADICIONE A FRENTE DA CNH</div>
+            <div className="upload">ADICIONE A TRÁS DA CNH</div>
+          </div>
         </div>
         <div style={{ width: "100%", textAlign: "center" }}>
           <button type="submit" className="botaoCadastrar">

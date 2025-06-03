@@ -1,73 +1,73 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Quicksand' sans-serif;
-    font-weight: bold; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand" sans-serif;
+  font-weight: bold;
 }
 
-.containerLogin{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+.containerLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
 }
 
-.tituloPrincipal{
-    font-size: 6rem;
-    color: #2E7D32;
-    margin-bottom: 20px;
-    text-align: center;
+.tituloPrincipal {
+  font-size: 6rem;
+  color: #2e7d32;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.containerInputs{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-    height: 300px;
-    background-color: #A8E6A3;
-    padding: 50px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.containerInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+  background-color: #a8e6a3;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.inputLogin{
-    align-items: center;
-    width: 225px;
-    height: 45px;
-    padding: 10px;
-    margin-bottom: 35px;
-    border: 1px solid #F5F5DB;
-    border-radius: 10px;
-    background-color: #F5F5DB;
+.inputLogin {
+  align-items: center;
+  width: 225px;
+  height: 45px;
+  padding: 10px;
+  margin-bottom: 35px;
+  border: 1px solid #f5f5db;
+  border-radius: 10px;
+  background-color: #f5f5db;
 }
 
-.botaoLogin{
-    width: 225px;
-    height: 45px;
-    padding: 10px;
-    background-color: #2E7D32;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1.3rem;
+.botaoLogin {
+  width: 225px;
+  height: 45px;
+  padding: 10px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.3rem;
 }
 
-.botaoRegistrar{
-    width: 100px;
-    height: 30px;
-    padding: 10px;
-    background-color: #2E7D32;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 0.6rem;
-    margin-top: 10px;
-    margin-left: 25%;
+.botaoRegistrar {
+  width: 100px;
+  height: 30px;
+  padding: 10px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.6rem;
+  margin-top: 10px;
+  margin-left: 25%;
 }
