@@ -10,6 +10,7 @@
   min-height: 100vh;
   background: #f9f9d5;
   position: relative;
+  padding: 20px;
 }
 
 .sidebar {
@@ -22,6 +23,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 1.2rem;
 }
 
 .logo {
@@ -72,24 +74,28 @@
 }
 
 
-/*
-.main {
-  flex: 1;
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+.inicioDashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 20px;
 }
 
-.card {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: bold;
+.metricasDashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 1000px;
+    font-size: 1.2rem;
 }
 
 .logout {
@@ -108,4 +114,3 @@
   align-items: center;
   justify-content: center;
 }
-*/
