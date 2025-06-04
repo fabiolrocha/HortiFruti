@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
-import "./Login.css";
+import "../style.css";
 
 const Login: React.FC = () => {
   // Estado para armazenar o username e password
