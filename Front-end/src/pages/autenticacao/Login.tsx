@@ -53,7 +53,7 @@ const Login: React.FC = () => {
             required
           />
           <br />
-          <button type="submit" className="botaoLogin">
+          <button type="submit" className="botaoLogin" onClick={() => navigate("/dashboard")}>
             LOGIN
           </button>
           <button

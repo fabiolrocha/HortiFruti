@@ -15,6 +15,7 @@ import MotosCadastradas from './pages/motos/MotosCadastradas';
 // Pedidos
 import PedidoDetalhes from './pages/pedidos/PedidoDetalhes';
 import PedidosDisponiveis from './pages/pedidos/PedidosDisponiveis';
+import PedidosSolicitacoes from './pages/pedidos/PedidosSolicitacoes';
 
 // Dashboard
 import Dashboard from './pages/dashboard/Dashboard';
@@ -38,6 +39,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/pedido/:id" element={<PedidoDetalhes />} />
         <Route path="/pedidos" element={<PedidosDisponiveis />} />
+        <Route path="/pedidos-solicitacoes" element={<PedidosSolicitacoes />} />
       </Routes>
     </BrowserRouter>
   );
