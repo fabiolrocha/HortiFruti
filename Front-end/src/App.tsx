@@ -17,7 +17,7 @@ import PedidoDetalhes from './pages/pedidos/PedidoDetalhes';
 import PedidosDisponiveis from './pages/pedidos/PedidosDisponiveis';
 
 // Dashboard
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/dashboard/Dashboard';
 function App() {
   return (
     <BrowserRouter>

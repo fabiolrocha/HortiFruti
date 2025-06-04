@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
-import "./Cadastro.css";
+import "../style.css";
 
 const Cadastro: React.FC = () => {
   const [nome, setNome] = useState("");
