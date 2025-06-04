@@ -35,13 +35,12 @@ const PedidosDisponiveis: React.FC = () => {
           </div>
           <div className="inicioPedidosDisponiveis">
             <div className="metricasPedidosDisponiveis">
-              <h1>PEDIDOS</h1>
+              <h1>VIAGEM SOLICITADA</h1>
               <img src={Rotas} alt="Rotas" />
-              <h1>ROTA 1</h1>
-              <button className="botaoConfirmarEntrega" onClick={() => navigate("/pedidos-detalhes")}>
-                CONFIRMAR ENTREGA
+              <h1>Taguatinga Norte</h1>
+              <button className="botaoConfirmarEntrega" onClick={() => navigate("/pedidos")}>
+                ACEITAR
               </button>
-              <p>RESTAM 3 ROTAS</p>
             </div>
           </div>
           <div className="historicoPedidosDisponiveis">

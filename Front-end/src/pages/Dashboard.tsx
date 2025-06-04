@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import "./Dashboard.css";
-import Logo from "./images/Logo.png";
+import Logo from "../images/Logo.png";
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
@@ -15,17 +15,17 @@ const Dashboard: React.FC = () => {
         </div>
         <nav className="menu">
           <ul>
-            <li className="ativo">Início</li>
-            <li>Renda Mensal</li>
-            <li>Quilometragem Semanal</li>
-            <li>Pedidos</li>
-            <li>Histórico de Entregas</li>
+            <li className="ativo" onClick={() => navigate("/dashboard")}>Início</li>
+            <li onClick={() => navigate("./metricas/RendaMensal.tsx")}>Renda Mensal</li>
+            <li onClick={() => navigate("/quilometragem-semanal")}>Quilometragem Semanal</li>
+            <li onClick={() => navigate("/pedidos")}>Pedidos</li>
+            <li onClick={() => navigate("/historico-entregas")}>Histórico de Entregas</li>
           </ul>
         </nav>
         <button className="botaoMoto">Cadastrar Nova Motocicleta</button>
       </aside>
 
-      <main className="inicioDashboard">
+      <main className="mainDashboard">
         <div className="metricasDashboard">
           <span>💸</span>
           <p>Renda Mensal: R$ 4623,50</p>

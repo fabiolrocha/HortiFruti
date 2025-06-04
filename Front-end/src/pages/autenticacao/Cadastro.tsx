@@ -130,7 +130,7 @@ const Cadastro: React.FC = () => {
           </div>
         </div>
         <div style={{ width: "100%", textAlign: "center" }}>
-          <button type="submit" className="botaoCadastrar">
+          <button type="submit" className="botaoCadastrar" onClick={() => navigate("/login")}>
             CADASTRAR
           </button>
         </div>

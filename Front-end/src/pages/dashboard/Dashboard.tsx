@@ -15,17 +15,17 @@ const Dashboard: React.FC = () => {
         </div>
         <nav className="menu">
           <ul>
-            <li className="ativo">Início</li>
-            <li>Renda Mensal</li>
-            <li>Quilometragem Semanal</li>
-            <li>Pedidos</li>
-            <li>Histórico de Entregas</li>
+            <li className="ativo" onClick={() => navigate("/dashboard")}>Início</li>
+            <li onClick={() => navigate("./renda-mensal")}>Renda Mensal</li>
+            <li onClick={() => navigate("/quilometragem-semanal")}>Quilometragem Semanal</li>
+            <li onClick={() => navigate("/pedidos-solicitacoes")}>Pedidos</li>
+            <li onClick={() => navigate("/historico-entregas")}>Histórico de Entregas</li>
           </ul>
         </nav>
-        <button className="botaoMoto">Cadastrar Nova Motocicleta</button>
+        <button className="botaoMoto" onClick={() => navigate("/cadastro-moto")}>Cadastrar Nova Motocicleta</button>
       </aside>
 
-      <main className="inicioDashboard">
+      <main className="mainDashboard">
         <div className="metricasDashboard">
           <span>💸</span>
           <p>Renda Mensal: R$ 4623,50</p>
