@@ -1,40 +1,70 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import { useNavigate } from 'react-router-dom';
+import "../style.css";
+import Logo from "../images/Logo.png";
+import Rotas from "../images/rotas.png";
+import Loc from "../images/loc.png";
+import Historico from "../images/historico.png";
 
-type Pedido = {
-  id: number;
-  cliente: string;
-  endereco: string;
-  status: string;
-};
 
 const PedidosDisponiveis: React.FC = () => {
-  const [pedidos, setPedidos] = useState<Pedido[]>([]);
   const navigate = useNavigate();
 
-  // Carrega os pedidos ao abrir a página
-  useEffect(() => {
-    api.get('/pedidos')
-      .then((response) => setPedidos(response.data))
-      .catch((error) => console.error('Erro ao buscar pedidos', error));
-  }, []);
-
-  const irParaDetalhes = (id: number) => {
-    navigate(`/pedido/${id}`);
-  };
-
-  return (
-    <div>
-      <h1>Pedidos Disponíveis</h1>
-      {pedidos.map((pedido) => (
-        <div key={pedido.id} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '8px' }}>
-          <p><strong>Cliente:</strong> {pedido.cliente}</p>
-          <p><strong>Endereço:</strong> {pedido.endereco}</p>
-          <p><strong>Status:</strong> {pedido.status}</p>
-          <button onClick={() => irParaDetalhes(pedido.id)}>Detalhes</button>
+   return (
+    <div className="dashboard">
+      <aside className="sidebar">
+        <div className="logo">
+          <img src={Logo} alt="Logo" />
         </div>
-      ))}
+        <nav className="menu">
+          <ul>
+            <li>Início</li>
+            <li>Renda Mensal</li>
+            <li>Quilometragem Semanal</li>
+            <li className="ativo">Pedidos</li>
+            <li>Histórico de Entregas</li>
+          </ul>
+        </nav>
+        <button className="botaoMoto">Cadastrar Nova Motocicleta</button>
+      </aside>
+
+      <main>
+        <div className='solicitacoesPedidosDisponiveis'>
+          <p>SOLICITAÇÕES</p>
+          <img src={Loc} alt="loc" />
+        </div>
+        <div className='historicoPedidosDisponiveis'>
+          <p>ROTAS</p>
+          <img src={Historico} alt="historico" />
+        </div>
+        <div className="inicioPedidosDisponiveis">
+        <div>
+          <h1>Pedidos</h1>
+        </div>
+        <div className="metricasPedidosDisponiveis">
+          <div className='containerPedidosDisponiveis'>
+              <img src={Rotas} alt="Rotas" />
+              <h1>ROTA 1</h1>
+              <button className="botaoConfirmarEntrega">CONFIRMAR ENTREGA</button>
+              <p>RESTAM 3 ROTAS</p>
+
+          </div>
+        </div>
+        </div>
+      </main>
+
+      <button className="botaoVoltar" onClick={() => navigate("../login")}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M15 18L9 12L15 6"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
     </div>
   );
 };
