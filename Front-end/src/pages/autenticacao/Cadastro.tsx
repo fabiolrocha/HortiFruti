@@ -1,41 +1,40 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, FormEvent } from "react";
+import {Link, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import "../style.css";
 
 const Cadastro: React.FC = () => {
-  const [nome, setNome] = useState("");
+  const [nome_completo, setnome_completo] = useState("");
   const [senha, setSenha] = useState("");
   const [cpf, setCpf] = useState("");
   const [endereco, setEndereco] = useState("");
-  const [numero, setNumero] = useState("");
-  const [motocicleta, setMotocicleta] = useState(false);
-  const [bicicleta, setBicicleta] = useState(false);
-  const [placaMoto, setPlacaMoto] = useState("");
-  const [modeloMoto, setModeloMoto] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const dadosCadastro = {
-      nome,
+      nome_completo,
       senha,
       cpf,
       endereco,
-      numero,
-      motocicleta,
-      bicicleta,
-      placaMoto,
-      modeloMoto,
+      email,
     };
+
+    if (!nome_completo || !senha || !cpf || !email) {
+      setError('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
 
     try {
       const response = await api.post("/auth/cadastro", dadosCadastro);
 
-      localStorage.setItem("entregadorId", response.data.entregadorId);
+      alert("Cadastro realizado com sucesso!");
 
-      navigate("../dashboard");
+      navigate("../login");
     } catch (error) {
       console.error("Erro no cadastro", error);
       alert("Cadastro falhou!");
@@ -53,8 +52,8 @@ const Cadastro: React.FC = () => {
               className="inputCadastro"
               type="text"
               placeholder="NOME COMPLETO"
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
+              value={nome_completo}
+              onChange={(e) => setnome_completo(e.target.value)}
               required
             />
             <input
@@ -84,53 +83,18 @@ const Cadastro: React.FC = () => {
             <input
               className="inputCadastro"
               type="text"
-              placeholder="NÚMERO"
-              value={numero}
-              onChange={(e) => setNumero(e.target.value)}
-              required
+              placeholder="EMAIL"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <div className="checkboxes">
-              <label>
-                <input
-                  type="checkbox"
-                  checked={motocicleta}
-                  onChange={(e) => setMotocicleta(e.target.checked)}
-                />{" "}
-                MOTOCICLETA
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={bicicleta}
-                  onChange={(e) => setBicicleta(e.target.checked)}
-                />{" "}
-                BICICLETA
-              </label>
-            </div>
           </div>
           <div className="informacoesCadastro">
-            <input
-              className="inputCadastro"
-              type="text"
-              placeholder="PLACA DA MOTOCICLETA"
-              value={placaMoto}
-              onChange={(e) => setPlacaMoto(e.target.value)}
-              required={motocicleta}
-            />
-            <input
-              className="inputCadastro"
-              type="text"
-              placeholder="MODELO DA MOTOCICLETA"
-              value={modeloMoto}
-              onChange={(e) => setModeloMoto(e.target.value)}
-              required={motocicleta}
-            />
             <div className="upload">ADICIONE A FRENTE DA CNH</div>
             <div className="upload">ADICIONE A TRÁS DA CNH</div>
           </div>
         </div>
         <div style={{ width: "100%", textAlign: "center" }}>
-          <button type="submit" className="botaoCadastrar" onClick={() => navigate("/login")}>
+          <button type="submit" className="botaoCadastrar">
             CADASTRAR
           </button>
         </div>

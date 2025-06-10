@@ -28,15 +28,15 @@ function App() {
         <Route path="/cadastro" element={<Cadastro />} />
 
         {/* Métricas */}
-        <Route path="/historico-entregas" element={<HistoricoEntregas />} />
-        <Route path="/renda-mensal" element={<RendaMensal />} />
+        <Route path="/historico-entregas/:entregadorId" element={<HistoricoEntregas />} />
+        <Route path="/renda-mensal/:entregadorId" element={<RendaMensal />} />
 
         {/* Motos */}
-        <Route path="/cadastro-moto" element={<CadastroMoto />} />
-        <Route path="/motos-cadastradas" element={<MotosCadastradas />} />
+        <Route path="/cadastro-moto/:entregadorId" element={<CadastroMoto />} />
+        <Route path="/motos-cadastradas/:entregadorId" element={<MotosCadastradas />} />
 
         {/* Pedidos */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/:entregadorId" element={<Dashboard />} />
         <Route path="/pedido/:id" element={<PedidoDetalhes />} />
         <Route path="/pedidos" element={<PedidosDisponiveis />} />
         <Route path="/pedidos-solicitacoes" element={<PedidosSolicitacoes />} />
