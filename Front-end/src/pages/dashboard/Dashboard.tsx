@@ -1,11 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 import "../style.css";
 import Logo from "../images/Logo.png";
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
+  const { entregadorId } = useParams<{ entregadorId: string }>();
 
   return (
     <div className="dashboard">
@@ -15,14 +16,14 @@ const Dashboard: React.FC = () => {
         </div>
         <nav className="menu">
           <ul>
-            <li className="ativo" onClick={() => navigate("/dashboard")}>Início</li>
-            <li onClick={() => navigate("./renda-mensal")}>Renda Mensal</li>
-            <li onClick={() => navigate("/quilometragem-semanal")}>Quilometragem Semanal</li>
-            <li onClick={() => navigate("/pedidos-solicitacoes")}>Pedidos</li>
-            <li onClick={() => navigate("/historico-entregas")}>Histórico de Entregas</li>
+            <li className="ativo" onClick={() => navigate(`/dashboard/${entregadorId}`)}>Início</li>
+            <li onClick={() => navigate(`/renda-mensal/${entregadorId}`)}>Renda Mensal</li>
+            <li onClick={() => navigate(`/quilometragem-semanal/${entregadorId}`)}>Quilometragem Semanal</li>
+            <li onClick={() => navigate(`/pedidos-solicitacoes/${entregadorId}`)}>Pedidos</li>
+            <li onClick={() => navigate(`/historico-entregas/${entregadorId}`)}>Histórico de Entregas</li>
           </ul>
         </nav>
-        <button className="botaoMoto" onClick={() => navigate("/cadastro-moto")}>Cadastrar Nova Motocicleta</button>
+        <button className="botaoMoto" onClick={() => navigate(`/cadastro-moto/${entregadorId}`)}>Cadastrar Nova Motocicleta</button>
       </aside>
 
       <main className="mainDashboard">

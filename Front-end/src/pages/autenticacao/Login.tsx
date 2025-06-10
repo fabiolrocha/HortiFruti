@@ -1,29 +1,31 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import "../style.css";
 
 const Login: React.FC = () => {
-  // Estado para armazenar o username e password
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  // Estado para armazenar o cpf e password
+  const [cpf, setCpf] = useState("");
+  const [senha, setSenha] = useState("");
+   const [error, setError] = useState<string | null>(null);
 
-  // Hook de navegação do React Router
   const navigate = useNavigate();
 
   // Função que será chamada ao enviar o formulário
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); // Previni o recarregamento da página
 
+    if (!senha || !cpf ) {
+      setError('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+
     try {
       // Faz a requisição POST para /auth/login com os dados
-      const response = await api.post("/auth/login", { username, password });
+      const response = await api.post("/auth/login", { cpf, senha });
 
-      // Armazena o token ou id no localStorage
-      localStorage.setItem("entregadorId", response.data.entregadorId);
-
-      // Redireciona para a página de pedidos
-      navigate("../dashboard");
+      const { id } = response.data;
+      navigate(`/dashboard/${id}`);
     } catch (error) {
       console.error("Erro no login", error);
       alert("Login falhou!");
@@ -39,8 +41,8 @@ const Login: React.FC = () => {
             className="inputLogin"
             type="text"
             placeholder="CPF"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={cpf}
+            onChange={(e) => setCpf(e.target.value)}
             required
           />
           <br />
@@ -48,12 +50,12 @@ const Login: React.FC = () => {
             className="inputLogin"
             type="password"
             placeholder="SENHA"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
             required
           />
           <br />
-          <button type="submit" className="botaoLogin" onClick={() => navigate("/dashboard")}>
+          <button type="submit" className="botaoLogin">
             LOGIN
           </button>
           <button
