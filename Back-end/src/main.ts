@@ -13,14 +13,15 @@ async function bootstrap() {
       whitelist: true, // Remove propriedades que não estão no DTO
       forbidNonWhitelisted: true, // Lança erro se propriedades extras forem enviadas
       transform: true, // Transforma o payload para o tipo do DTO (útil para tipos primitivos)
-      // disableErrorMessages: true, // Em produção, pode-se desabilitar mensagens de erro detalhadas
     }),
   );
 
   app.useGlobalFilters(new TypeOrmExceptionFilter());
 
   app.enableCors(); // Habilita CORS para permitir requisições do front-end
-  await app.listen(process.env.PORT ?? 3000);
+  const port = process.env.PORT ?? 3000;
+  const host = process.env.HOST ?? 'localhost';
+  await app.listen(port, host);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();

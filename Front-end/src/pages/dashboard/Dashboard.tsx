@@ -19,7 +19,7 @@ const Dashboard: React.FC = () => {
             <li className="ativo" onClick={() => navigate(`/dashboard/${entregadorId}`)}>Início</li>
             <li onClick={() => navigate(`/renda-mensal/${entregadorId}`)}>Renda Mensal</li>
             <li onClick={() => navigate(`/quilometragem-semanal/${entregadorId}`)}>Quilometragem Semanal</li>
-            <li onClick={() => navigate(`/pedidos-solicitacoes/${entregadorId}`)}>Pedidos</li>
+            <li onClick={() => navigate(`/pedidos/disponiveis/${entregadorId}`)}>Pedidos</li>
             <li onClick={() => navigate(`/historico-entregas/${entregadorId}`)}>Histórico de Entregas</li>
           </ul>
         </nav>
