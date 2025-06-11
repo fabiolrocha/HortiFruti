@@ -1,23 +1,49 @@
-import { Controller, Get, Patch, Param, Body } from '@nestjs/common';
+// Back-end/src/pedidos/pedidos.controller.ts
+
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  ParseUUIDPipe,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
+import { PedidosService } from './pedidos.service';
+import { AceitarPedidoDto } from './dto/aceitar-pedido.dto'; // 1. Importe o novo DTO
 
 @Controller('pedidos')
 export class PedidosController {
-  private pedidos = [
-    { id: 1, cliente: 'João', endereco: 'Rua A', status: 'pendente' },
-    { id: 2, cliente: 'Maria', endereco: 'Rua B', status: 'pendente' },
-  ];
+  constructor(private readonly pedidosService: PedidosService) {}
 
-  @Get()
-  findAll() {
-    return this.pedidos;
+  @Post('seed')
+  @HttpCode(HttpStatus.OK)
+  seed() {
+    return this.pedidosService.seed();
   }
 
-  @Patch(':id/status')
-  updateStatus(@Param('id') id: string, @Body() body: { status: string }) {
-    const pedido = this.pedidos.find(p => p.id === +id);
-    if (pedido) {
-      pedido.status = body.status;
-    }
-    return pedido;
+  @Get('disponiveis')
+  findAvailable() {
+    return this.pedidosService.findAvailable();
+  }
+
+  // ↓↓↓↓↓↓ A CORREÇÃO ESTÁ AQUI ↓↓↓↓↓↓
+  @Patch(':pedidoId/aceitar')
+  accept(
+    @Param('pedidoId', ParseUUIDPipe) pedidoId: string,
+    @Body() aceitarPedidoDto: AceitarPedidoDto, // 2. Use o novo DTO validado
+  ) {
+    // 3. Acesse a propriedade correta do DTO (entregadorId)
+    return this.pedidosService.accept(pedidoId, aceitarPedidoDto.entregadorId);
+  }
+  // ↑↑↑↑↑↑ FIM DA CORREÇÃO ↑↑↑↑↑↑
+
+  @Get('entregador/:entregadorId')
+  findHistoryByEntregador(
+    @Param('entregadorId', ParseUUIDPipe) entregadorId: string,
+  ) {
+    return this.pedidosService.findHistoryByEntregador(entregadorId);
   }
 }

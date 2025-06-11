@@ -43,7 +43,7 @@ const Cadastro: React.FC = () => {
 
   return (
     <div className="containerCadastro">
-      <h1 className="cadastreInformacoes">Cadastre Suas Informações</h1>
+      <h1 className="cadastreInformacoes">CADASTRE SUAS INFORMAÇÕES</h1>
 
       <form className="formularioCadastro" onSubmit={handleSubmit}>
         <div className="containerInformacoesCadastro">
