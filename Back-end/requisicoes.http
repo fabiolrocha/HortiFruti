@@ -1,0 +1,80 @@
+### ================================================
+###              FLUXO DE AUTENTICAÇÃO
+### ================================================
+
+# Cadastrar um novo entregador
+POST http://localhost:3000/auth/cadastro
+Content-Type: application/json
+
+{
+  "nome_completo": "Fabio Rocha",
+  "cpf": "08791127513",
+  "email": "fabio.rocha@a.ucb.br",
+  "senha": "minhasenha",
+  "endereco": "CSG 03, DF",
+  "telefone": "77998205373"
+}
+
+###
+
+# Realizar login de um entregador
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "cpf": "08791127513",
+  "senha": "minhasenha"
+}
+
+### ================================================
+###                FLUXO DE MOTOS
+### ================================================
+
+# Cadastrar uma nova moto para um entregador
+# Substitua {{entregadorId}} pelo ID de um entregador existente
+POST http://localhost:3000/moto/entregador/{{entregadorId}}
+Content-Type: application/json
+
+{
+  "modelo": "Honda CG 160 Titan",
+  "placa": "BRA2E19",
+  "cor": "Vermelha",
+  "ano_fabricacao": 2023
+}
+
+###
+
+# Buscar todas as motos de um entregador
+# Substitua {{entregadorId}} pelo ID de um entregador existente
+GET http://localhost:3000/moto/entregador/{{entregadorId}}
+
+### ================================================
+###                FLUXO DE PEDIDOS
+### ================================================
+
+# Criar pedidos de teste (Seed)
+# Útil para popular o banco de dados para testes
+POST http://localhost:3000/pedidos/seed
+
+###
+
+# Listar todos os pedidos disponíveis para entrega
+GET http://localhost:3000/pedidos/disponiveis
+
+###
+
+# Aceitar um pedido
+# Substitua {{pedidoId}} pelo ID de um pedido disponível
+# Substitua {{entregadorId}} pelo ID do entregador que está aceitando
+PATCH http://localhost:3000/pedidos/{{pedidoId}}/aceitar
+Content-Type: application/json
+
+{
+  "entregadorId": "{{entregadorId}}"
+}
+
+###
+
+# Ver o histórico de pedidos de um entregador
+# Substitua {{entregadorId}} pelo ID do entregador
+GET http://localhost:3000/pedidos/entregador/{{entregadorId}}
