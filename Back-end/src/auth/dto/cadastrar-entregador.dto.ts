@@ -1,5 +1,3 @@
-// Estudar posteriormente
-
 import { IsString, IsEmail, MinLength, IsNotEmpty, IsOptional, isNotEmpty, isString } from 'class-validator';
 
 export class CadastrarEntregadorDto{

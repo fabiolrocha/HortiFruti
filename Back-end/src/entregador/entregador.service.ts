@@ -1,14 +1,7 @@
-// Estudar posteriormente
-
-
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Entregador } from './entities/entregador.entity';
-import { find } from 'rxjs';
-
-// Interface para os dados de criação, pode ser um DTO específico do Entregador.
-// Para simplificar, vamos usar Partial<Entregador> ou definir os campos explicitamente.
 
 interface CreateEntregadorData {
   nome_completo: string;
@@ -38,7 +31,6 @@ export class EntregadorService {
   }
 
   async findByCpf(cpf: string): Promise<Entregador | null> {
-    // <-- Método necessário
     return this.entregadorRepository.findOne({ where: { cpf } });
   }
 

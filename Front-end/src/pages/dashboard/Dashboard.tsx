@@ -1,12 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 import "../style.css";
 import Logo from "../images/Logo.png";
 
+interface Metricas {
+  rendaMensal: number;
+  quilometragemSemanal: number;
+  pedidosEmEspera: number;
+  historicoEntregas: number;
+}
+
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const { entregadorId } = useParams<{ entregadorId: string }>();
+
+  const [metricas, setMetricas] = useState<Metricas | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!entregadorId) {
+      setLoading(false);
+      return;
+    }
+
+    async function fetchMetricas() {
+      try {
+        const response = await api.get(`/pedidos/metricas/${entregadorId}`);
+        setMetricas(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar métricas:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchMetricas();
+  }, [entregadorId]);
 
   return (
     <div className="dashboard">
@@ -16,32 +46,54 @@ const Dashboard: React.FC = () => {
         </div>
         <nav className="menu">
           <ul>
-            <li className="ativo" onClick={() => navigate(`/dashboard/${entregadorId}`)}>Início</li>
-            <li onClick={() => navigate(`/renda-mensal/${entregadorId}`)}>Renda Mensal</li>
-            <li onClick={() => navigate(`/quilometragem-semanal/${entregadorId}`)}>Quilometragem Semanal</li>
-            <li onClick={() => navigate(`/pedidos/disponiveis/${entregadorId}`)}>Pedidos</li>
-            <li onClick={() => navigate(`/historico-entregas/${entregadorId}`)}>Histórico de Entregas</li>
+            <li
+              className="ativo"
+              onClick={() => navigate(`/dashboard/${entregadorId}`)}
+            >
+              Início
+            </li>
+            <li onClick={() => navigate(`/renda-mensal/${entregadorId}`)}>
+              Renda Mensal
+            </li>
+            <li
+              onClick={() => navigate(`/quilometragem-semanal/${entregadorId}`)}
+            >
+              Quilometragem Semanal
+            </li>
+            <li
+              onClick={() => navigate(`/pedidos/disponiveis/${entregadorId}`)}
+            >
+              Pedidos
+            </li>
+            <li onClick={() => navigate(`/historico-entregas/${entregadorId}`)}>
+              Histórico de Entregas
+            </li>
           </ul>
         </nav>
-        <button className="botaoMoto" onClick={() => navigate(`/cadastro-moto/${entregadorId}`)}>Cadastrar Nova Motocicleta</button>
+        <button
+          className="botaoMoto"
+          onClick={() => navigate(`/cadastro-moto/${entregadorId}`)}
+        >
+          Cadastrar Nova Motocicleta
+        </button>
       </aside>
 
       <main className="mainDashboard">
         <div className="metricasDashboard">
           <span>💸</span>
-          <p>Renda Mensal: R$ 4623,50</p>
+          <p>Renda Mensal: R$ {metricas?.rendaMensal || '0.00'}</p>
         </div>
         <div className="metricasDashboard">
           <span>🚚</span>
-          <p>Quilometragem Semanal: 1483km</p>
+          <p>Quilometragem Semanal: {metricas ? metricas.quilometragemSemanal.toFixed(2) : '0.0'}km</p>
         </div>
         <div className="metricasDashboard">
           <span>🛒</span>
-          <p>Pedidos em Espera: 4</p>
+          <p>Pedidos em Espera: {metricas?.pedidosEmEspera || 0}</p>
         </div>
         <div className="metricasDashboard">
           <span>📦</span>
-          <p>Histórico de Entregas: 1216</p>
+          <p>Histórico de Entregas: {metricas?.historicoEntregas || 0}</p>
         </div>
       </main>
 

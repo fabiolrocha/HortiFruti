@@ -7,17 +7,18 @@ import Cadastro from './pages/autenticacao/Cadastro';
 // Métricas
 import HistoricoEntregas from './pages/metricas/HistoricoEntregas';
 import RendaMensal from './pages/metricas/RendaMensal';
+import QuilometragemSemanal from './pages/metricas/QuilometragemSemanal';
 
 // Motos
 import CadastroMoto from './pages/motos/CadastroMoto';
 import MotosCadastradas from './pages/motos/MotosCadastradas';
 
 // Pedidos
-import PedidoDetalhes from './pages/pedidos/PedidoDetalhes';
 import PedidosDisponiveis from './pages/pedidos/PedidosDisponiveis';
 
 // Dashboard
 import Dashboard from './pages/dashboard/Dashboard';
+
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +30,7 @@ function App() {
         {/* Métricas */}
         <Route path="/historico-entregas/:entregadorId" element={<HistoricoEntregas />} />
         <Route path="/renda-mensal/:entregadorId" element={<RendaMensal />} />
+        <Route path="/quilometragem-semanal/:entregadorId" element={<QuilometragemSemanal />} />
 
         {/* Motos */}
         <Route path="/cadastro-moto/:entregadorId" element={<CadastroMoto />} />
@@ -36,7 +38,6 @@ function App() {
 
         {/* Pedidos */}
         <Route path="/dashboard/:entregadorId" element={<Dashboard />} />
-        <Route path="/pedido/:id" element={<PedidoDetalhes />} />
         <Route path="/pedidos/disponiveis/:entregadorId" element={<PedidosDisponiveis />} />
       </Routes>
     </BrowserRouter>

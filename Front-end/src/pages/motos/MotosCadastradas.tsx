@@ -68,7 +68,6 @@ const MotosCadastradas: React.FC = () => {
             ))}
           </ul>
         ) : (
-          // Mensagem para caso não haja motos cadastradas
           <p className="semMotosCadastradas">
             Você ainda não tem nenhuma moto cadastrada.
           </p>

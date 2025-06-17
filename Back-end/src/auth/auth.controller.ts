@@ -1,6 +1,3 @@
-// Estudar posteriormente
-
-
 import {
   Controller,
   Post,
@@ -27,7 +24,6 @@ export class AuthController {
   @Post('login')
   @HttpCode(HttpStatus.OK)
   async login(@Body() loginDto: LoginDto) {
-    // O tipo de retorno será Omit<Entregador, 'senha'>
     return this.authService.login(loginDto);
   }
 }
