@@ -1,4 +1,3 @@
-//Estudar depois
 
 import { ExceptionFilter, Catch, ArgumentsHost, HttpStatus } from '@nestjs/common';
 import { Response } from 'express';
@@ -17,7 +16,7 @@ export class TypeOrmExceptionFilter implements ExceptionFilter {
     let message = 'Ocorreu um erro interno no servidor.';
 
     if (errorCode === 'ER_DUP_ENTRY' || errorMessage.includes('duplicate key')) {
-      status = HttpStatus.CONFLICT; // 409 Conflict
+      status = HttpStatus.CONFLICT;
       message = 'O registro já existe. A entidade única já está cadastrada.';
 
       if (errorMessage.includes('placa')) {

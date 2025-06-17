@@ -1,5 +1,3 @@
-// Back-end/src/pedidos/pedidos.controller.ts
-
 import {
   Controller,
   Get,
@@ -8,42 +6,62 @@ import {
   Patch,
   Param,
   ParseUUIDPipe,
-  HttpCode,
-  HttpStatus,
 } from '@nestjs/common';
 import { PedidosService } from './pedidos.service';
-import { AceitarPedidoDto } from './dto/aceitar-pedido.dto'; // 1. Importe o novo DTO
 
 @Controller('pedidos')
 export class PedidosController {
   constructor(private readonly pedidosService: PedidosService) {}
 
-  @Post('seed')
-  @HttpCode(HttpStatus.OK)
-  seed() {
-    return this.pedidosService.seed();
-  }
-
+  // Rota para buscar pedidos disponíveis para todos
   @Get('disponiveis')
-  findAvailable() {
-    return this.pedidosService.findAvailable();
+  findDisponiveis() {
+    return this.pedidosService.findDisponiveis();
   }
 
-  // ↓↓↓↓↓↓ A CORREÇÃO ESTÁ AQUI ↓↓↓↓↓↓
-  @Patch(':pedidoId/aceitar')
-  accept(
-    @Param('pedidoId', ParseUUIDPipe) pedidoId: string,
-    @Body() aceitarPedidoDto: AceitarPedidoDto, // 2. Use o novo DTO validado
-  ) {
-    // 3. Acesse a propriedade correta do DTO (entregadorId)
-    return this.pedidosService.accept(pedidoId, aceitarPedidoDto.entregadorId);
-  }
-  // ↑↑↑↑↑↑ FIM DA CORREÇÃO ↑↑↑↑↑↑
-
-  @Get('entregador/:entregadorId')
-  findHistoryByEntregador(
+  // Rota para buscar o histórico de um entregador específico
+  @Get('historico/:entregadorId')
+  findHistoricoDoEntregador(
     @Param('entregadorId', ParseUUIDPipe) entregadorId: string,
   ) {
-    return this.pedidosService.findHistoryByEntregador(entregadorId);
+    return this.pedidosService.findHistoricoDoEntregador(entregadorId);
+  }
+
+  // Rota para buscar as métricas de um entregador
+  @Get('metricas/:entregadorId')
+  getMetricas(@Param('entregadorId', ParseUUIDPipe) entregadorId: string) {
+    return this.pedidosService.getMetricas(entregadorId);
+  }
+
+  // Rota para marcar um pedido como entregue
+  @Patch(':pedidoId/disponiveis')
+  marcarComoEntregue(
+    @Param('pedidoId', ParseUUIDPipe) pedidoId: string,
+    @Body() body: { entregadorId: string },
+  ) {
+    return this.pedidosService.marcarComoEntregue(pedidoId, body.entregadorId);
+  }
+
+  // Rota para buscar dados do gráfico de renda mensal
+  @Get('grafico/renda-mensal/:entregadorId')
+  getDadosGraficoRendaMensal(
+    @Param('entregadorId', ParseUUIDPipe) entregadorId: string,
+  ) {
+    return this.pedidosService.getDadosGraficoRendaMensal(entregadorId);
+  }
+
+  // Rota para buscar dados do gráfico de quilometragem semanal
+  @Get('grafico/quilometragem/:entregadorId')
+  getDadosGraficoQuilometragemSemanal(
+    @Param('entregadorId', ParseUUIDPipe) entregadorId: string,
+  ) {
+    return this.pedidosService.getDadosGraficoQuilometragemSemanal(
+      entregadorId,
+    );
+  }
+
+  @Post('seed/:entregadorId')
+  seed(@Param('entregadorId', ParseUUIDPipe) entregadorId: string) {
+    return this.pedidosService.seed(entregadorId);
   }
 }

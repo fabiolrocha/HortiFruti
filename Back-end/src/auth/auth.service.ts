@@ -1,6 +1,3 @@
-// Estudar posteriormente
-
-
 import {
   Injectable,
   ConflictException,
@@ -33,12 +30,11 @@ export class AuthService {
     }
 
     try {
-      // A senha é salva como texto simples, conforme solicitado para esta fase.
       const novoEntregador = await this.entregadorService.create({
         nome_completo,
         cpf,
         email,
-        senha, // Salva a senha como texto simples
+        senha,
         endereco,
         telefone,
       });
@@ -63,14 +59,11 @@ export class AuthService {
       throw new UnauthorizedException('CPF ou senha inválidos.');
     }
 
-    // Comparação de senha em texto simples.
-    // MUITO INSEGURO PARA PRODUÇÃO! Usar bcrypt.compare em um cenário real.
     if (entregador.senha !== senha) {
       throw new UnauthorizedException('CPF ou senha inválidos.');
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { senha: _, ...result } = entregador; // Remove a senha do objeto retornado
+    const { senha: _, ...result } = entregador;
     return result;
   }
 }

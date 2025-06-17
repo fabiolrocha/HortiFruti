@@ -1,5 +1,3 @@
-// Back-end/src/entregador/entities/entregador.entity.ts
-
 import { Moto } from '../../moto/entities/moto.entity';
 import { Pedido } from '../../pedidos/entities/pedido.entity'; // 1. Importe a entidade Pedido
 import {
@@ -13,7 +11,6 @@ import {
 
 @Entity('entregadores')
 export class Entregador {
-  // ... outras propriedades como id, nome_completo, cpf, etc. ...
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -44,7 +41,6 @@ export class Entregador {
   @OneToMany(() => Moto, (moto) => moto.entregador, { nullable: true })
   motos?: Moto[];
 
-  // 2. Adicione este relacionamento
   @OneToMany(() => Pedido, (pedido) => pedido.entregador, { nullable: true })
   pedidos: Pedido[];
 }

@@ -1,5 +1,3 @@
-// Estudar posteriormente
-
 import { IsString, IsNotEmpty } from 'class-validator';
 
 export class LoginDto {

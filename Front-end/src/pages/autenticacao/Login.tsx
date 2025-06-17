@@ -4,16 +4,14 @@ import api from "../../services/api";
 import "../style.css";
 
 const Login: React.FC = () => {
-  // Estado para armazenar o cpf e password
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
    const [error, setError] = useState<string | null>(null);
 
   const navigate = useNavigate();
 
-  // Função que será chamada ao enviar o formulário
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); // Previni o recarregamento da página
+    e.preventDefault();
 
     if (!senha || !cpf ) {
       setError('Por favor, preencha todos os campos obrigatórios.');
@@ -21,7 +19,6 @@ const Login: React.FC = () => {
     }
 
     try {
-      // Faz a requisição POST para /auth/login com os dados
       const response = await api.post("/auth/login", { cpf, senha });
 
       const { id } = response.data;
