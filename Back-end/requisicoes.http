@@ -53,28 +53,39 @@ GET http://localhost:3000/moto/entregador/{{entregadorId}}
 ### ================================================
 
 # Criar pedidos de teste (Seed)
-# Útil para popular o banco de dados para testes
-POST http://localhost:3000/pedidos/seed
+# Popular o banco de dados para testes
+POST http://localhost:3000/pedidos/seed/{{COLAR O NUMERO DO ID DO ENTREGADOR AQUI}}
 
 ###
 
-# Listar todos os pedidos disponíveis para entrega
+# Após rodar o seed, use esta rota para ver os pedidos e copiar o "id" de um deles
 GET http://localhost:3000/pedidos/disponiveis
 
 ###
 
-# Aceitar um pedido
-# Substitua {{pedidoId}} pelo ID de um pedido disponível
-# Substitua {{entregadorId}} pelo ID do entregador que está aceitando
-PATCH http://localhost:3000/pedidos/{{pedidoId}}/aceitar
+# Marcar um pedido como entregue
+# Esta ação remove o pedido do mural de disponíveis e o associa ao seu entregador.
+PATCH http://localhost:3000/pedidos/{{COLAR O NUMERO DO ID DO PEDIDO AQUI}}/entregue
 Content-Type: application/json
 
 {
-  "entregadorId": "{{entregadorId}}"
+  "entregadorId": "{{COLAR O NUMERO DO ID DO ENTREGADOR AQUI}}"
 }
 
 ###
 
 # Ver o histórico de pedidos de um entregador
-# Substitua {{entregadorId}} pelo ID do entregador
-GET http://localhost:3000/pedidos/entregador/{{entregadorId}}
+GET http://localhost:3000/pedidos/historico/{{COLAR O NUMERO DO ID DO ENTREGADOR AQUI}}
+
+### ================================================
+###                FLUXO DE MÉTRICAS E GRÁFICOS
+### ================================================
+
+# Obter as métricas do Dashboard para o seu entregador
+GET http://localhost:3000/pedidos/metricas/{{COLAR O NUMERO DO ID DO ENTREGADOR AQUI}}
+
+# Obter dados para o gráfico de Renda Mensal
+GET http://localhost:3000/pedidos/grafico/renda-mensal/{{COLAR O NUMERO DO ID DO ENTREGADOR AQUI}}
+
+# Obter dados para o gráfico de Quilometragem Semanal
+GET http://localhost:3000/pedidos/grafico/quilometragem/{{COLAR O NUMERO DO ID DO ENTREGADOR AQUI}}
