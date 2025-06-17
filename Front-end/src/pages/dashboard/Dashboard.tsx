@@ -81,7 +81,7 @@ const Dashboard: React.FC = () => {
       <main className="mainDashboard">
         <div className="metricasDashboard">
           <span>💸</span>
-          <p>Renda Mensal: R$ {metricas?.rendaMensal || '0.00'}</p>
+          <p>Renda Mensal: R$ {metricas? metricas.rendaMensal.toFixed(2) : '0.00'}</p>
         </div>
         <div className="metricasDashboard">
           <span>🚚</span>
